@@ -1,29 +1,18 @@
-﻿namespace VideoStore
+﻿using System;
+
+namespace VideoStore
 {
     public class Rental
     {
-        private readonly IMovie movie;
-        private readonly int daysRented;
+        public Movie Movie { get; }
+        public int DaysRented { get; }
+        public RentalType Type { get; }
 
-        public Rental(IMovie movie, int daysRented)
+        public Rental(Movie movie, int daysRented, RentalType type)
         {
-            this.movie = movie;
-            this.daysRented = daysRented;
-        }
-
-        public string GetMovieTitle()
-        {
-            return movie.Title;
-        }
-
-        public double GetRentalPrice()
-        {
-            return movie.GetMoviePrice(daysRented);
-        }
-
-        public int GetRentalFrequentRenterPoints()
-        {
-            return movie.GetMovieRentalFrequentRenterPoints(daysRented);
+            Movie = movie;
+            DaysRented = daysRented;
+            Type = type;
         }
     }
 }
