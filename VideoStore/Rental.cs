@@ -2,23 +2,28 @@
 {
     public class Rental
     {
-        public Rental(Movie movie, int daysRented)
+        private readonly IMovie movie;
+        private readonly int daysRented;
+
+        public Rental(IMovie movie, int daysRented)
         {
             this.movie = movie;
             this.daysRented = daysRented;
         }
 
-        public int GetDaysRented()
+        public string GetMovieTitle()
         {
-            return daysRented;
+            return movie.Title;
         }
 
-        public Movie GetMovie()
+        public double GetRentalPrice()
         {
-            return movie;
+            return movie.GetMoviePrice(daysRented);
         }
 
-        private Movie movie;
-        private int daysRented;
+        public int GetRentalFrequentRenterPoints()
+        {
+            return movie.GetMovieRentalFrequentRenterPoints(daysRented);
+        }
     }
 }
